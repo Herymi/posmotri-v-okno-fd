@@ -2,7 +2,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /* все элементы и их псевдоэлементы рассчитывают ширину/высоту с учётом padding и border */
 }
 
 html {
@@ -13,8 +12,6 @@ html {
 .page {
   inline-size: 1200px;
   /* ширина блока 1200px */
-  display: flex;
-  /* включает flex-контейнер */
   block-size: 100%;
   /* высота блока 100% */
   margin: auto;
@@ -22,11 +19,17 @@ html {
   color: #fff;
   /* белый цвет текста */
   font-family: 'Fira Sans Condensed', sans-serif;
-  /* шрифт */
+  /* шрифт Fira Sans Condensed или запасной sans-serif */
   font-size: 18px;
   /* размер текста 18px */
   background-color: #1b1919;
   /* тёмно-серый фон */
+  display: flex;
+  /* включает flex-контейнер */
+  justify-content: center;
+  /* выравнивание дочерних элементов по центру горизонтали */
+  align-items: center;
+  /* вертикальное выравнивание дочерних элементов по центру */
 }
 
 h1,
@@ -48,7 +51,7 @@ fieldset {
 ul,
 ol {
   list-style: none;
-  /* скрывает маркеры списков */
+  /* скрывает маркеры/номера списков */
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -58,7 +61,6 @@ ol {
 
 .custom-scrollbar::-webkit-scrollbar-track {
   background: rgb(217 217 217 / 10%);
-  /* полупрозрачный серый фон дорожки */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -68,342 +70,380 @@ ol {
 
 .content {
   display: flex;
-  /* flex-контейнер */
-  justify-content: center;
-  /* выравнивание дочерних элементов по центру горизонтали */
-  width: 100%;
-  /* ширина 100% */
+  /* включает flex-контейнер */
+  align-items: end;
+  /* выравнивает дочерние элементы по нижнему краю */
+  width: 1140px;
+  /* ширина контейнера 1140px */
   gap: 30px;
-  /* расстояние между элементами 30px */
-  align-items: center;
-  /* вертикальное выравнивание по центру */
-  margin: 0 30px 0 30px;
-  /* отступы: сверху 0, справа 30px, снизу 0, слева 30px */
+  /* расстояние между дочерними элементами 30px */
 }
 
 .result {
   display: flex;
-  /* flex-контейнер */
+  /* включает flex-контейнер */
   flex-direction: column;
-  /* вертикальная компоновка дочерних элементов */
-  width: 100%;
-  /* ширина 100% */
-  max-width: 711px;
-  /* максимальная ширина 711px */
-  height: 100%;
-  /* высота 100% */
-  gap: 16px;
-  /* расстояние между элементами 16px */
-  justify-content: flex-end;
-  /* прижимает элементы к нижнему краю */
+  /* дочерние элементы располагаются вертикально */
 }
 
 .result__video-container {
-  display: flex;
-  /* flex-контейнер */
+  height: 386px;
+  /* фиксированная высота 386px */
+  width: 711px;
+  /* фиксированная ширина 711px */
+  margin-bottom: 16px;
+  /* отступ снизу 16px */
   position: relative;
   /* относительное позиционирование */
-  overflow: visible;
-  /* содержимое не обрезается */
-  width: 100%;
-  /* ширина 100% */
-  aspect-ratio: 16/9;
-  /* соотношение сторон 16:9 */
 }
 
 .result__video {
   width: 100%;
-  /* ширина 100% */
+  /* занимает всю ширину родителя */
   height: 100%;
-  /* высота 100% */
+  /* занимает всю высоту родителя */
   object-fit: cover;
   /* изображение заполняет контейнер с обрезкой */
-  object-position: center;
-  /* центр изображения по центру контейнера */
 }
 
 .search-form {
   display: flex;
-  /* flex-контейнер */
+  /* включает flex-контейнер */
   justify-content: space-between;
-  /* распределение пространства между элементами */
-  align-items: flex-end;
-  /* выравнивание по нижнему краю */
+  /* распределяет пространство между дочерними элементами */
+  align-items: start;
+  /* выравнивает дочерние элементы по верхнему краю */
+}
+
+.search-form__textfield {
+  min-width: 225px;
+  /* минимальная ширина 225px */
+  font-family: 'Fira Sans Condensed', sans-serif;
+  /* шрифт Fira Sans Condensed или запасной */
+  border: 1px solid white;
+  /* белая граница толщиной 1px */
+  border-left: none;
+  /* убирает левую границу */
+  border-right: none;
+  /* убирает правую границу */
+  color: #fff;
+  /* белый цвет текста */
+  background-color: transparent;
+  /* прозрачный фон */
+  appearance: none;
+  /* убирает стандартные стили браузера */
+  font-size: 18px;
+  /* размер шрифта 18px */
+  line-height: 100%;
+  /* межстрочный интервал равен размеру шрифта */
+}
+
+.search-form__textfield::placeholder {
+  color: rgb(255 255 255 / 0.7);
+  /* полупрозрачный белый цвет подсказки (70% прозрачности) */
 }
 
 .search-form__fieldset {
-  display: flex;
-  /* flex-контейнер */
-  flex-direction: column;
-  /* вертикальная компоновка */
   border: none;
-  /* без рамки */
-  max-width: 212px;
-  /* макс. ширина 212px */
-  width: 100%;
-  /* ширина 100% */
+  /* убирает границу fieldset */
 }
 
 .search-form__fieldset-title {
   font-size: 18px;
   /* размер шрифта 18px */
-  font-weight: normal;
-  /* обычный вес шрифта */
+  font-weight: 400;
+  /* обычный вес шрифта (не жирный) */
   margin-bottom: 5px;
   /* отступ снизу 5px */
-  line-height: 1.222;
-  /* межстрочный интервал 1.222 */
-}
-
-.visually-hidden {
-  position: absolute;
-  /* абсолютное позиционирование */
-  inline-size: 1px;
-  /* ширина 1px */
-  block-size: 1px;
-  /* высота 1px */
-  overflow: hidden;
-  /* скрытое переполнение */
-  clip: rect(0 0 0 0);
-  /* обрезка содержимого */
-  clip-path: inset(50%);
-  /* дополнительная обрезка */
-  white-space: nowrap;
-  /* текст без переносов */
-}
-
-.search-form__label {
-  display: flex;
-  /* flex-контейнер */
-  align-items: center;
-  /* выравнивание по вертикали */
-  gap: 5px;
-  /* расстояние между элементами 5px */
-}
-
-.search-form__label:has(.search-form__checkbox):hover {
-  cursor: url('../assets/img/cursor.png'), auto;
-  /* кастомный курсор при наведении */
-  text-decoration: underline;
-  /* подчёркивание текста */
-}
-
-.search-form__textfield {
-  background-color: transparent;
-  /* прозрачный фон */
-  border: none;
-  /* без границы */
-  font-weight: normal;
-  /* обычный вес шрифта */
-  font-size: 18px;
-  /* размер шрифта 18px */
-  color: #FFFFFF;
-  /* белый цвет текста */
-  font-family: 'Fira Sans Condensed', sans-serif;
-  /* шрифт */
-  letter-spacing: 0;
-  /* межбуквенное расстояние 0 */
-  border-top: 1px solid #fff;
-  /* верхняя граница 1px белая */
-  border-bottom: 1px solid #fff;
-  /* нижняя граница 1px белая */
-  appearance: none;
-  /* убирает стандартные стили браузера */
-  margin-top: 2px;
-  /* отступ сверху 2px */
-  margin-bottom: 2px;
-  /* отступ снизу 2px */
-  padding: 0;
-  /* внутренние отступы 0 */
-  max-width: 225px;
-  /* макс. ширина 225px */
-  width: 100%;
-  /* ширина 100% */
-}
-
-.search-form__textfield::placeholder {
-  font-size: 18px;
-  /* размер шрифта 18px */
-  color: rgb(255 255 255 / 0.7);
-  /* полупрозрачный белый цвет */
-}
-
-.search-form__label:has(:focus-visible) {
-  outline: 1px solid #fff;
-  /* белая обводка при фокусе */
 }
 
 .search-form__checkbox-list {
   display: flex;
-  /* flex-контейнер */
-  gap: 14px;
-  /* расстояние между элементами 14px */
+  /* включает flex-контейнер */
+  gap: 15px;
+  /* расстояние между элементами 15px */
 }
 
-.search-form__checkbox {
-  width: 19px;
-  /* ширина 19px */
-  height: 19px;
-  /* высота 19px */
+.search-form__label {
+  display: flex;
+  /* включает flex-контейнер */
+  align-items: center;
+  /* выравнивает содержимое по вертикали по центру */
+  width: fit-content;
+  /* ширина определяется содержимым */
+  gap: 5px;
+  /* расстояние между элементами внутри 5px */
+  cursor: pointer;
+  /* курсор в виде указателя (рука) */
+}
+
+.search-form__label:has(:focus) {
+  outline: none;
+  /* убирает обводку при фокусе */
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  /* белая обводка толщиной 1px при видимом фокусе */
+  outline-offset: 1px;
+  /* смещение обводки наружу на 1px */
+}
+
+.search-form__textfield:focus {
+  outline: none;
+  /* убирает стандартную обводку фокуса */
+}
+
+.search-form__textfield:focus-visible {
+  outline: 1px solid white;
+  /* белая обводка толщиной 1px при видимом фокусе */
+  outline-offset: 1px;
+  /* смещение обводки наружу на 1px */
 }
 
 .search-form__pseudo-checkbox {
-  border: 1px solid #fff;
-  /* белая граница 1px */
   width: 19px;
   /* ширина 19px */
   height: 19px;
   /* высота 19px */
+  background-color: transparent;
+  /* прозрачный фон */
+  border: 1px solid #fff;
+  /* белая граница 1px */
   padding: 1px;
   /* внутренний отступ 1px */
 }
 
 .search-form__pseudo-checkbox::after {
-  content: "";
-  /* пустой контент */
+  content: '';
+  /* пустой контент псевдоэлемента */
   display: block;
   /* блочный элемент */
   background-color: #fff;
   /* белый фон */
   width: 100%;
-  /* ширина 100% */
+  /* ширина 100% от родителя */
   height: 100%;
-  /* высота 100% */
+  /* высота 100% от родителя */
   opacity: 0;
   /* полностью прозрачен */
 }
 
 .search-form__checkbox:checked+.search-form__pseudo-checkbox::after {
   opacity: 1;
-  /* становится видимым при отмеченном чекбоксе */
+  /* становится видимым, когда чекбокс отмечен */
+}
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+  /* подчёркивание текста при наведении */
 }
 
 .button {
   font-family: 'Fira Sans Condensed', sans-serif;
+  /* шрифт Fira Sans Condensed или запасной */
+  font-weight: 700;
+  /* жирный шрифт (700) */
   font-size: 18px;
-  font-weight: bold;
+  /* размер шрифта 18px */
+  line-height: 100%;
+  /* межстрочный интервал равен размеру шрифта */
   background-color: transparent;
+  /* прозрачный фон */
   color: #fff;
+  /* белый цвет текста */
   border: 1px solid #fff;
+  /* белая граница 1px */
   height: 34px;
-  text-decoration: none;
+  /* фиксированная высота 34px */
+  cursor: pointer;
+  /* курсор в виде указателя */
 }
 
-.button:hover, .content__card-link:hover {
-  cursor: url('../assets/img/cursor.png'), auto; /* при наведении меняет курсор на кастомное изображение (если доступно), иначе стандартный */
-  text-decoration: underline; /* добавляет подчёркивание текста */
+.button:focus {
+  outline: 0;
+  /* убирает обводку при фокусе */
 }
 
-.button:active, .content__card-link:active {
-  background-color: #545050; /* при нажатии устанавливает тёмно‑серый фон */
-  color: #FFFFFF; /* при нажатии делает текст белым */
+.button:focus-visible {
+  outline: 1px solid white;
+  /* белая обводка при видимом фокусе */
+  outline-offset: 1px;
+  /* смещение обводки наружу на 1px */
 }
 
-.button:focus-visible, .search-form__fieldset:focus-visible, .search-form__label:focus-visible, .content__list-item:focus-visible, .content__card-link:focus-visible {
-  outline: 1px solid #fff; /* добавляет белую обводку толщиной 1 px для элементов в фокусе */
-  outline-offset: 2px; /* смещает обводку наружу на 2 px */
+.button:hover {
+  text-decoration: underline;
+  /* подчёркивание при наведении */
 }
 
-.search-form__textfield:focus-visible {
-  outline: none; /* убирает стандартную обводку фокуса для текстового поля */
+.button:active {
+  background-color: #545050;
+  /* тёмно‑серый фон при нажатии */
 }
 
 .search-form__submit-button {
-  max-width: 194px; /* ограничивает максимальную ширину кнопки 194 px */
-  width: 100%; /* занимает всю доступную ширину внутри родителя */
-  align-self: flex-end; /* выравнивает кнопку по правому краю внутри flex‑контейнера */
+  align-self: end;
+  /* выравнивает кнопку по нижнему краю внутри flex‑контейнера */
+  width: 194px;
+  /* устанавливает фиксированную ширину кнопки 194 px */
 }
 
 .content__details {
-  max-width: 399px; /* ограничивает максимальную ширину контейнера 399 px */
-  width: 100%; /* занимает полную ширину внутри родителя */
-  display: flex; /* превращает контейнер в flex‑блок */
-  flex-direction: column; /* располагает дочерние элементы вертикально */
-  gap: 26px; /* задаёт отступ между элементами 26 px */
+  width: 100%;
+  /* занимает всю доступную ширину родителя */
+  height: 100%;
+  /* занимает всю доступную высоту родителя */
+  display: flex;
+  /* превращает контейнер в flex‑блок */
+  flex-direction: column;
+  /* располагает дочерние элементы вертикально */
+  gap: 26px;
+  /* задаёт вертикальный отступ между элементами 26 px */
+  margin-top: 8px;
+  /* добавляет внешний отступ сверху 8 px */
 }
 
 .title {
-  font-size: 75px; /* размер шрифта 75 px */
-  font-family: Oswald, sans-serif; /* использует шрифт Oswald или запасной sans‑serif */
-  font-weight: bold; /* делает шрифт жирным */
-  line-height: 0.94; /* устанавливает межстрочный интервал 0.94 от размера шрифта */
-  text-transform: uppercase; /* преобразует текст в заглавные буквы */
+  font-family: 'Oswald', sans-serif;
+  /* использует шрифт Oswald или запасной sans‑serif */
+  font-size: 75px;
+  /* размер шрифта 75 px */
+  font-weight: 700;
+  /* насыщенность шрифта (жирный) */
+  text-transform: uppercase;
+  /* преобразует текст в заглавные буквы */
+  line-height: 94%;
+  /* межстрочный интервал составляет 94% от размера шрифта */
 }
 
 .content__accent {
-  color: #545050; /* задаёт тёмно‑серый цвет текста */
+  color: #545050;
+  /* задаёт тёмно‑серый цвет текста (#545050) */
 }
 
 .content__list-container {
-  height: 298px; /* фиксирует высоту контейнера 298 px */
-  overflow-y: scroll; /* включает вертикальную прокрутку при переполнении */
-  position: relative; /* устанавливает относительное позиционирование (дочерние элементы могут быть абсолютно позиционированы внутри) */
+  height: 298px;
+  /* фиксирует высоту контейнера 298 px */
+  overflow-y: scroll;
+  /* включает вертикальную прокрутку при переполнении содержимого */
+  display: flex;
+  /* превращает контейнер в flex‑блок */
+  flex-direction: column;
+  /* располагает дочерние элементы вертикально */
+  gap: 30px;
+  /* задаёт отступ между элементами 30 px */
+  position: relative;
 }
 
-
 .content__list {
-  max-width: 390px; /* ограничивает максимальную ширину списка 390 px */
-  width: 100%; /* занимает полную ширину внутри родителя */
-  display: flex; /* превращает список в flex‑блок */
-  flex-direction: column; /* располагает элементы вертикально */
-  gap: 30px; /* задаёт отступ между элементами 30 px */
-  padding: 1px; /* добавляет внутренний отступ 1 px */
+  display: flex;
+  /* превращает список в flex‑блок */
+  flex-direction: column;
+  /* располагает элементы вертикально */
+  gap: 30px;
+  /* задаёт отступ между элементами 30 px */
+}
+
+.content__list-item {
+  padding: 0 3px;
 }
 
 .content__card-link {
-  display: block; /* делает ссылку блочным элементом */
-  text-decoration: none; /* убирает подчёркивание ссылки */
-  color: #FFFFFF; /* устанавливает белый цвет текста */
-}
-
-.content__card-link_current {
-  background-color: #545050; /* для текущей активной ссылки устанавливает тёмно‑серый фон */
+  color: #fff;
+  /* белый цвет текста (#ffffff) */
+  text-decoration: none;
+  /* убирает подчёркивание ссылки */
 }
 
 .content__video-card {
-  display: flex; /* превращает карточку видео в flex‑блок */
+  display: flex;
+  /* превращает карточку в flex‑блок */
+  align-items: start;
+  /* выравнивает дочерние элементы по верхнему краю */
+}
+
+.content__video-card:active {
+  background-color: #545050;
+}
+
+.content__video-card:hover {
+  text-decoration: underline;
+  /* при наведении добавляет подчёркивание */
+}
+
+.content__card-link_current {
+  background-color: #545050;
+  display: block;
+  /* делает элемент блочным */
 }
 
 .content__video-card-description-container {
-  display: flex; /* превращает контейнер описания в flex‑блок */
-  flex-direction: column; /* располагает дочерние элементы вертикально */
+  flex-grow: 1;
+  /* позволяет контейнеру расти, заполняя свободное пространство */
+  width: 196px;
+  /* фиксированная ширина контейнера 196 px */
 }
 
 .content__video-card-title {
-  font-family: Oswald, sans-serif; /* использует шрифт Oswald или запасной sans‑serif */
-  font-size: 30px; /* размер шрифта 30 px */
-  font-weight: bold; /* делает шрифт жирным */
-  text-transform: uppercase; /* преобразует текст в заглавные буквы */
-  text-decoration: none; /* убирает подчёркивание */
-  display: block; /* делает заголовок блочным элементом */
-  overflow: hidden; /* скрывает выходящее за границы содержимое */
-  white-space: nowrap; /* запрещает перенос строк */
-  text-overflow: ellipsis; /* заменяет скрытый текст на многоточие */
-  max-width: 100%; /* ограничивает ширину 100% от родителя */
+  font-family: 'Oswald', sans-serif;
+  /* использует шрифт Oswald или запасной sans‑serif */
+  overflow: hidden;
+  /* скрывает содержимое, выходящее за границы элемента */
+  font-size: 30px;
+  /* размер шрифта 30 px */
+  font-weight: 700;
+  /* насыщенность шрифта (жирный) */
+  text-transform: uppercase;
+  /* преобразует текст в заглавные буквы */
+  text-overflow: ellipsis;
+  /* заменяет скрытый текст многоточием */
+  line-height: 100%;
+  /* межстрочный интервал равен размеру шрифта */
+  margin-bottom: 6px;
+  /* внешний отступ снизу 6 px */
 }
 
 .content__video-card-description {
-  font-size: 18px; 
-  display: -webkit-box; 
-  -webkit-box-orient: vertical; 
-  -webkit-line-clamp: 1;
-  overflow: hidden; 
-}
-
-.content__video-card-description-container, .content__video-card-thumbnail {
-  flex: 1 1 0; /* позволяет элементам расти и сжиматься, базовая ширина 0 */
-  min-width: 0; /* снимает ограничение минимальной ширины */
-  align-items: stretch; /* растягивает элементы по высоте контейнера */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 16.2px;
 }
 
 .content__video-card-thumbnail {
-  display: block; /* делает миниатюру блочным элементом */
-  width: 100%; /* занимает полную ширину родителя */
-  height: 103px; /* фиксирует высоту миниатюры 103 px */
-  object-fit: cover; /* заполняет контейнер, обрезая изображение при необходимости */
+  height: 103px;
+  /* фиксированная высота миниатюры 103 px */
+  min-width: 194px;
+  /* минимальная ширина миниатюры 194 px */
+  object-fit: cover;
+  /* изображение заполняет контейнер с обрезкой */
+  object-position: center;
+  /* центрирует изображение внутри контейнера */
 }
 
 .more-button {
-  margin-top: 30px; /* добавляет отступ сверху 30 px */
-  width: 100%; /* занимает полную ширину родителя */
+  width: 100%;
+  /* занимает всю доступную ширину родителя */
+  flex-shrink: 0;
+  /* запрещает сжатие элемента при нехватке пространства */
+}
+
+.visually-hidden {
+  position: absolute;
+  /* абсолютное позиционирование (вне потока документа) */
+  inline-size: 1px;
+  /* ширина элемента 1 px */
+  block-size: 1px;
+  /* высота элемента 1 px */
+  overflow: hidden;
+  /* скрывает всё содержимое, выходящее за пределы элемента */
+  clip: rect(0 0 0 0);
+  /* обрезает элемент до невидимого прямоугольника */
+  clip-path: inset(50%);
+  /* дополнительная обрезка (скрывает 50% с каждой стороны) */
+  white-space: nowrap;
+  /* запрещает перенос текста на новую строку */
 }
