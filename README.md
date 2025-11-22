@@ -1,1 +1,1 @@
-https://github.com/Herymi/posmotri-v-okno-fd#
+https://github.com/Herymi/posmotri-v-okno-fd.git
