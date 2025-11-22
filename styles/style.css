@@ -90,8 +90,6 @@ ol {
   /* ширина 100% */
   max-width: 711px;
   /* максимальная ширина 711px */
-  max-height: 534px;
-  /* максимальная высота 534px */
   height: 100%;
   /* высота 100% */
   gap: 16px;
@@ -224,8 +222,6 @@ ol {
 }
 
 .search-form__textfield::placeholder {
-  letter-spacing: -1px;
-  /* сжатие букв на -1px */
   font-size: 18px;
   /* размер шрифта 18px */
   color: rgb(255 255 255 / 0.7);
@@ -284,12 +280,13 @@ ol {
 
 .button {
   font-family: 'Fira Sans Condensed', sans-serif;
-  /* шрифт */
   font-size: 18px;
-  /* размер шрифта 18px */
   font-weight: bold;
-  /* жирный шрифт */
   background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  height: 34px;
+  text-decoration: none;
 }
 
 .button:hover, .content__card-link:hover {
@@ -331,7 +328,6 @@ ol {
   font-weight: bold; /* делает шрифт жирным */
   line-height: 0.94; /* устанавливает межстрочный интервал 0.94 от размера шрифта */
   text-transform: uppercase; /* преобразует текст в заглавные буквы */
-  max-height: 210px; /* ограничивает максимальную высоту элемента 210 px */
 }
 
 .content__accent {
@@ -387,11 +383,11 @@ ol {
 }
 
 .content__video-card-description {
-  font-size: 18px; /* размер шрифта 18 px */
-  display: -webkit-box; /* использует старый синтаксис flex для WebKit */
-  -webkit-box-orient: vertical; /* задаёт вертикальное направление для WebKit */
-  -webkit-line-clamp: 1; /* ограничивает текст одной строкой с многоточием (WebKit) */
-  overflow: hidden; /* скрывает выходящий за границы текст */
+  font-size: 18px; 
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 1;
+  overflow: hidden; 
 }
 
 .content__video-card-description-container, .content__video-card-thumbnail {
